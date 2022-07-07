@@ -1,0 +1,22 @@
+<script>
+function back(){
+	history.back()
+}
+
+function forward(){
+	history.forward()
+}
+</script>
+
+<button onclick="back()">后退</button>
+<button onclick="forward()">前进</button>
+<br/>
+<hr/>
+
+<h1>学习笔记</h1>
+<h3>
+{% if user.is_authenticated %}{{user.username}},{% endif %}
+欢迎来的学习笔记</h3>
+<br/>
+<a href="{% url 'learning_logs:topics' %}">我的笔记</a>
+<a href="{% url 'learning_logs:new_topic' %}">新建</a>

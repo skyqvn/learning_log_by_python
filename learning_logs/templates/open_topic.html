@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+	function delete_entry(entry_id){
+		if (confirm('是否删除')){
+			window.location.href = '{% url 'learning_logs:index' %}'+'delete_entry/'+entry_id;
+		};
+	};
+</script>
+
+<h2>{{topic}}</h2>
+{% for entry in entries %}
+	<h3><a href="{% url 'learning_logs:edit_entry' entry.id %}">{{entry.date_added}}</a></h3>
+	<p>{{entry}}</p>
+	<button onclick="delete_entry({{entry.id}})">删除</button>
+	<hr>
+{% empty %}
+	<h2>还无笔记哦</h2>
+	<a href="{% url 'learning_logs:index' %}">主页</a>
+{% endfor %}
+<br>
+<br>
+<a href="{% url 'learning_logs:new_entry' topic.id %}"><button>新建</button></a>
+
+
+{% endblock content %}
+

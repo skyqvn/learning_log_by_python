@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if form.error %}
+	<p>error</p>
+{% endif %}
+<p>{% url 'users:login' %}</p>
+<form method="post" action="{% url 'users:login' %}">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button>登录</button>
+	<input name="next" type="hidden" value="{% url 'learning_logs:index' %}">
+</form>
+<a href="{% url 'users:register' %}">注册</a>
+{% endblock content %}
+

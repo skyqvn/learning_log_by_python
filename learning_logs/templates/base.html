@@ -1,0 +1,27 @@
+<script>
+function back(){
+	history.back()
+}
+
+function forward(){
+	history.forward()
+}
+</script>
+
+<button onclick="back()">后退</button>
+<button onclick="forward()">前进</button>
+<br>
+<br>
+
+<a href="{% url 'learning_logs:index' %}">主页</a>-
+<a href="{% url 'learning_logs:topics' %}">我的笔记</a>-
+<a href="{% url 'learning_logs:new_topic' %}">新建</a>-
+{% if user.is_authenticated %}
+<a href="{% url 'users:logout' %}">退出登录</a>
+{% else %}
+<a href="{% url 'users:login' %}">登录</a>
+{% endif %}
+<br>
+<br>
+<hr color="black">
+{% block content %}{% endblock content %}

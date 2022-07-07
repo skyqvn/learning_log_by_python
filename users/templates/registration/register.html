@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'users:register' %}" method="post">
+	{% csrf_token %}
+	{{form}}
+	<button name="submit">注册</button>
+	<input type="hidden" name="next" value="{% url 'learning_logs:index' %}"/>
+</form>
+{% endblock content %}
